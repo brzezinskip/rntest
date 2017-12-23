@@ -1,23 +1,28 @@
 import React, { Component } from 'react';
 import {
-    Platform,
     Button,
     StyleSheet,
     Text,
     View
 } from 'react-native';
+import { connect } from 'react-redux';
+import fetchQuestionsFromAPI from '../actions';
 
-export default WelcomeScreen = ({ navigation }) => (
-    <View style={styles.container}>
-        <Text style={styles.welcome}>
-            Welcome to Main Screen!
+const WelcomeScreen = (props) => {
+    const { questions: { questions, isFetching }, navigation } = props;
+    return (
+        <View style={styles.container}>
+            <Text style={styles.welcome}>
+                Welcome to Main Screen!
         </Text>
-        <Button
-            onPress={() => navigation.navigate('Question')}
-            title="Go to details"
-        />
-    </View>
-);
+            {isFetching && <Text style={{ color: 'blue' }}>ASD</Text>}
+            <Button
+                onPress={props.getQuestions}
+                title="Get questions and start quiz!"
+            />
+        </View>
+    )
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -27,3 +32,18 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5FCFF',
     },
 });
+
+
+function mapStateToProps(state) {
+    return {
+        questions: state.questions,
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        getQuestions: () => dispatch(fetchQuestionsFromAPI())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WelcomeScreen)
