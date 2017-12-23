@@ -6,7 +6,7 @@ import {
     ActivityIndicator
 } from 'react-native';
 import { connect } from 'react-redux';
-import fetchQuestionsFromAPI from '../actions';
+import { fetchQuestionsFromAPI } from '../actions';
 import Button from '../common/Button';
 
 const buttonBody = (isFetching) =>
@@ -16,7 +16,7 @@ const buttonBody = (isFetching) =>
         "Tap to start quiz!";
 
 const WelcomeScreen = (props) => {
-    const { questions: { questions, isFetching }, navigation } = props;
+    const { questions: { questions, isFetching }, navigation, getQuestions } = props;
 
     return (
         <View style={styles.container}>
@@ -30,7 +30,7 @@ const WelcomeScreen = (props) => {
                 Can you score 100%?
             </Text>
             <Button
-                onPress={props.getQuestions}
+                onPress={getQuestions}
                 body={buttonBody(isFetching)}
             />
         </View>

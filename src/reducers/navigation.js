@@ -6,7 +6,6 @@ const initialState = RootNavigator.router.getStateForAction(RootNavigator.router
 
 export default function nav(state = initialState, action) {
     let nextState;
-    console.log(action.type)
     switch (action.type) {
         case 'Welcome':
             nextState = RootNavigator.router.getStateForAction(
