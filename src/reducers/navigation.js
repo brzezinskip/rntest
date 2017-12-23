@@ -14,9 +14,9 @@ export default function nav(state = initialState, action) {
                 state
             );
             break;
-        case 'Question':
+        case 'Quiz':
             nextState = RootNavigator.router.getStateForAction(
-                NavigationActions.navigate({ routeName: 'Question' }),
+                NavigationActions.navigate({ routeName: 'Quiz' }),
                 state
             );
             break;

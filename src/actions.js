@@ -14,7 +14,7 @@ export default function fetchQuestionsFromAPI() {
 function setResultsAndNavigateToQuestions(results) {
     return dispatch => {
         dispatch(getQuestionsSuccess(results));
-        dispatch({ type: 'Question' });
+        dispatch({ type: 'Quiz' });
     }
 }
 

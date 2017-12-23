@@ -9,7 +9,7 @@ import {
 export default QuizScreen = ({ navigation }) => (
     <View style={styles.container}>
         <Text style={styles.welcome}>
-            Welcome to Question Screen!
+            Welcome to Quiz Screen!
         </Text>
         <Button
             onPress={() => navigation.navigate('Summary')}
