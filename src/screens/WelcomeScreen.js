@@ -1,24 +1,31 @@
 import React, { Component } from 'react';
 import {
-    Button,
     StyleSheet,
     Text,
-    View
+    View,
+    ActivityIndicator
 } from 'react-native';
 import { connect } from 'react-redux';
 import fetchQuestionsFromAPI from '../actions';
+import Button from '../common/Button';
+
+const buttonBody = (isFetching) =>
+    isFetching ? (
+        <ActivityIndicator size="large" />
+    ) :
+        "Tap to start quiz!"
 
 const WelcomeScreen = (props) => {
     const { questions: { questions, isFetching }, navigation } = props;
+
     return (
         <View style={styles.container}>
             <Text style={styles.welcome}>
-                Welcome to Main Screen!
-        </Text>
-            {isFetching && <Text style={{ color: 'blue' }}>ASD</Text>}
+                Welcome to the Trivia Challenge!
+            </Text>
             <Button
                 onPress={props.getQuestions}
-                title="Get questions and start quiz!"
+                body={buttonBody(isFetching)}
             />
         </View>
     )
@@ -29,8 +36,13 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#FFDEA3',
     },
+    welcome: {
+        fontSize: 30,
+        textAlign: 'center',
+        color: '#7F622B',
+    }
 });
 
 
