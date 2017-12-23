@@ -13,7 +13,7 @@ const buttonBody = (isFetching) =>
     isFetching ? (
         <ActivityIndicator size="large" />
     ) :
-        "Tap to start quiz!"
+        "Tap to start quiz!";
 
 const WelcomeScreen = (props) => {
     const { questions: { questions, isFetching }, navigation } = props;
@@ -22,6 +22,12 @@ const WelcomeScreen = (props) => {
         <View style={styles.container}>
             <Text style={styles.welcome}>
                 Welcome to the Trivia Challenge!
+            </Text>
+            <Text style={styles.welcome}>
+                You will be presented with 10 True or False questions.
+            </Text>
+            <Text style={styles.welcome}>
+                Can you score 100%?
             </Text>
             <Button
                 onPress={props.getQuestions}
@@ -33,8 +39,10 @@ const WelcomeScreen = (props) => {
 
 const styles = StyleSheet.create({
     container: {
+        paddingVertical: 20,
+        paddingHorizontal: 20,
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: '#FFDEA3',
     },

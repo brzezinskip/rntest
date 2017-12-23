@@ -6,7 +6,7 @@ import {
     View
 } from 'react-native';
 
-export default QuestionScreen = ({ navigation }) => (
+export default QuizScreen = ({ navigation }) => (
     <View style={styles.container}>
         <Text style={styles.welcome}>
             Welcome to Question Screen!
