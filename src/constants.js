@@ -1,3 +1,7 @@
+export const WELCOME = 'WELCOME';
+export const QUIZ = 'QUIZ';
+export const SUMMARY = 'SUMMARY';
+export const RESTART_GAME = 'RESTART_GAME';
 export const FETCHING_QUESTIONS = 'FETCHING_DATA';
 export const FETCHING_QUESTIONS_SUCCESS = 'FETCHING_SUCCESS';
 export const FETCHING_QUESTIONS_FAILURE = 'FETCHING_FAILURE';

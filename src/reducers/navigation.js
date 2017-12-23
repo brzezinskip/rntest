@@ -1,4 +1,5 @@
 import { NavigationActions } from 'react-navigation';
+import { WELCOME, QUIZ, SUMMARY, RESTART_GAME } from "../constants";
 
 import { RootNavigator } from '../navigators/AppNavigator';
 const initialState = RootNavigator.router.getStateForAction(RootNavigator.router.getActionForPathAndParams('Welcome'));
@@ -7,23 +8,26 @@ const initialState = RootNavigator.router.getStateForAction(RootNavigator.router
 export default function nav(state = initialState, action) {
     let nextState;
     switch (action.type) {
-        case 'Welcome':
+        case WELCOME:
             nextState = RootNavigator.router.getStateForAction(
                 NavigationActions.reset(),
                 state
             );
             break;
-        case 'Quiz':
+        case QUIZ:
             nextState = RootNavigator.router.getStateForAction(
                 NavigationActions.navigate({ routeName: 'Quiz' }),
                 state
             );
             break;
-        case 'Summary':
+        case SUMMARY:
             nextState = RootNavigator.router.getStateForAction(
                 NavigationActions.navigate({ routeName: 'Summary' }),
                 state
             );
+            break;
+        case RESTART_GAME:
+            nextState = initialState;
             break;
         default:
             nextState = RootNavigator.router.getStateForAction(action, state);

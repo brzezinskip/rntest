@@ -1,5 +1,8 @@
 import {
     API_URL,
+    RESTART_GAME,
+    SUMMARY,
+    QUIZ,
     FETCHING_QUESTIONS,
     FETCHING_QUESTIONS_SUCCESS,
     FETCHING_QUESTIONS_FAILURE,
@@ -20,7 +23,7 @@ export function fetchQuestionsFromAPI() {
 function setResultsAndNavigateToQuiz(results) {
     return dispatch => {
         dispatch(getQuestionsSuccess(results));
-        dispatch({ type: 'Quiz' });
+        dispatch({ type: QUIZ });
     }
 }
 
@@ -44,10 +47,9 @@ function getQuestionsFailure() {
 }
 
 export function answerQuestionAndNavigateToSummary(answersCount, answer) {
-    console.log(answersCount)
     return dispatch => {
-        if (answersCount === 10) { dispatch({ type: 'Summary' }); }
-        else { dispatch(answerQuestion(answer)); }
+        if (answersCount === 10) { dispatch({ type: SUMMARY }); }
+        dispatch(answerQuestion(answer));
     }
 }
 
@@ -55,5 +57,11 @@ function answerQuestion(answer) {
     return {
         type: QUESTION_ANSWERED,
         answer,
+    }
+}
+
+export function restartGame() {
+    return {
+        type: RESTART_GAME
     }
 }

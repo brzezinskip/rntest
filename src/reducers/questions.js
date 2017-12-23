@@ -1,4 +1,5 @@
 import {
+    RESTART_GAME,
     FETCHING_QUESTIONS,
     FETCHING_QUESTIONS_SUCCESS,
     FETCHING_QUESTIONS_FAILURE,
@@ -57,6 +58,9 @@ export default function questionsReducer(state = initialState, action) {
                 activeQuestion: state.questions[state.activeQuestionIndex + 1],
                 activeQuestionIndex: state.activeQuestionIndex + 1,
             }
+        }
+        case RESTART_GAME: {
+            return initialState;
         }
         default:
             return state

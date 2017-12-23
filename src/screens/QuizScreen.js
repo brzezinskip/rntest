@@ -42,6 +42,7 @@ class QuizScreen extends Component {
             outputRange: [0, 1]
         })
         const { questions: { questions, activeQuestion, answers }, navigation, answerQuestionAndNavigateToSummary } = this.props;
+        if (!activeQuestion) { return <View style={styles.container} />; }
         return (
             <View style={styles.container}>
                 <Animated.View style={[styles.textContainer, { opacity }]}>
@@ -50,6 +51,9 @@ class QuizScreen extends Component {
                     </Text>
                     <Text style={styles.welcome}>
                         {activeQuestion.question}
+                    </Text>
+                    <Text style={styles.welcome}>
+                        {answers.length + 1} of {questions.length}
                     </Text>
                 </Animated.View>
                 <View style={styles.buttonsContainer}>
