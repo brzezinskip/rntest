@@ -49,12 +49,14 @@ class QuizScreen extends Component {
                     <Text style={styles.welcome}>
                         {activeQuestion.category}
                     </Text>
-                    <Text style={styles.welcome}>
-                        {activeQuestion.question}
-                    </Text>
-                    <Text style={styles.welcome}>
-                        {answers.length + 1} of {questions.length}
-                    </Text>
+                    <View style={styles.borderedText}>
+                        <Text style={styles.welcome}>
+                            {activeQuestion.question}
+                        </Text>
+                        <Text style={styles.questionCount}>
+                            {answers.length + 1} of {questions.length}
+                        </Text>
+                    </View>
                 </Animated.View>
                 <View style={styles.buttonsContainer}>
                     <Button
@@ -93,6 +95,11 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#7F622B',
     },
+    questionCount: {
+        fontSize: 23,
+        textAlign: 'center',
+        color: '#7F622B',
+    },
     textContainer: {
         flex: 3,
         justifyContent: 'space-around'
@@ -105,6 +112,11 @@ const styles = StyleSheet.create({
     },
     truthyButton: {
         backgroundColor: "#FFC357"
+    },
+    borderedText: {
+        borderWidth: 4,
+        borderColor: "black",
+        padding: 10,
     }
 });
 
