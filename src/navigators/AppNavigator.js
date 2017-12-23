@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 
-import QuestionScreen from '../screens/QuestionScreen';
+import QuizScreen from '../screens/QuizScreen';
 import SummaryScreen from '../screens/SummaryScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 
@@ -11,8 +11,8 @@ export const RootNavigator = StackNavigator({
         screen: WelcomeScreen,
         navigationOptions: { header: null }
     },
-    Question: {
-        screen: QuestionScreen,
+    Quiz: {
+        screen: QuizScreen,
         navigationOptions: { header: null }
     },
     Summary: {
