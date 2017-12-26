@@ -1,13 +1,13 @@
 import {
     API_URL,
+    FETCHING_QUESTIONS,
+    FETCHING_QUESTIONS_FAILURE,
+    FETCHING_QUESTIONS_SUCCESS,
+    QUESTION_ANSWERED,
+    QUIZ,
     RESTART_GAME,
     SUMMARY,
-    QUIZ,
-    FETCHING_QUESTIONS,
-    FETCHING_QUESTIONS_SUCCESS,
-    FETCHING_QUESTIONS_FAILURE,
-    QUESTION_ANSWERED,
-} from "./util/constants";
+} from './util/constants';
 
 
 export function fetchQuestionsFromAPI() {

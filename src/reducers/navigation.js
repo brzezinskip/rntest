@@ -1,7 +1,8 @@
 import { NavigationActions } from 'react-navigation';
-import { WELCOME, QUIZ, SUMMARY, RESTART_GAME } from "../util/constants";
 
 import { RootNavigator } from '../navigators/AppNavigator';
+import { QUIZ, RESTART_GAME, SUMMARY, WELCOME } from '../util/constants';
+
 const initialState = RootNavigator.router.getStateForAction(RootNavigator.router.getActionForPathAndParams('Welcome'));
 
 
@@ -33,7 +34,5 @@ export default function nav(state = initialState, action) {
             nextState = RootNavigator.router.getStateForAction(action, state);
             break;
     }
-
-    // Simply return the original `state` if `nextState` is null or undefined.
     return nextState || state;
 }

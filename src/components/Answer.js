@@ -1,15 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-export default Answer = ({ question, correct }) => (
-    (
-        <View style={styles.container}>
-            <Text style={[correct ? styles.correct : styles.incorrect, styles.buttonText]}>
-                <Text style={{ fontSize: 35 }}>{correct ? "+" : "-"}</Text> {question}
-            </Text>
-        </View>
-    )
-)
+export default Answer = ({ question, correct }) =>
+    <View style={styles.container}>
+        <Text style={[correct ? styles.correct : styles.incorrect, styles.buttonText]}>
+            <Text style={{ fontSize: 35 }}>{correct ? "+" : "-"}</Text> {question}
+        </Text>
+    </View>
 
 
 const styles = StyleSheet.create({

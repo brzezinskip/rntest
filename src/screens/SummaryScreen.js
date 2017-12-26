@@ -1,17 +1,13 @@
-import React, { Component } from 'react';
-import {
-    Text,
-    View,
-    ScrollView,
-} from 'react-native';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { ScrollView, View } from 'react-native';
 import { connect } from 'react-redux';
+
 import { restartGame } from '../actions';
 import Answer from '../components/Answer';
-import Button from '../components/Button';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { container } from "../util/styles";
+import Header from '../components/Header';
+import { container } from '../util/styles';
 
 const correctAnswersCount = (answers) => {
     return answers.reduce((acc, answer) => answer.correct ? acc + 1 : acc, 0)

@@ -1,18 +1,11 @@
-import React, { Component } from 'react';
-import {
-    Animated,
-    StyleSheet,
-    Text,
-    Easing,
-    Dimensions,
-    View
-} from 'react-native';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { Animated, Dimensions, Easing, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
+
 import { answerQuestionAndNavigateToSummary } from '../actions';
-import Button from '../components/Button';
 import Header from '../components/Header';
-import { container, welcomeText } from "../util/styles";
+import { container, welcomeText } from '../util/styles';
 
 class QuizScreen extends Component {
     constructor(props) {

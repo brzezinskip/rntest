@@ -1,10 +1,10 @@
 import {
-    RESTART_GAME,
     FETCHING_QUESTIONS,
-    FETCHING_QUESTIONS_SUCCESS,
     FETCHING_QUESTIONS_FAILURE,
+    FETCHING_QUESTIONS_SUCCESS,
     QUESTION_ANSWERED,
-} from "../util/constants";
+    RESTART_GAME,
+} from '../util/constants';
 
 const initialState = {
     fetchedQuestions: [],

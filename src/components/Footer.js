@@ -1,7 +1,8 @@
 import React from 'react';
+import Button from '../components/Button';
 import { StyleSheet, View } from 'react-native';
 
-export default Footer = ({ buttons }) => (
+export default Footer = ({ buttons }) =>
     <View style={styles.container}>
         {buttons.map(button =>
             <Button
@@ -12,7 +13,6 @@ export default Footer = ({ buttons }) => (
             />
         )}
     </View>
-);
 
 
 const styles = StyleSheet.create({

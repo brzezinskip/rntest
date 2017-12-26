@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
+import { connect } from 'react-redux';
 
 import QuizScreen from '../screens/QuizScreen';
 import SummaryScreen from '../screens/SummaryScreen';

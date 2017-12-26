@@ -1,16 +1,12 @@
-import React, { Component } from 'react';
-import {
-    Text,
-    View,
-    ActivityIndicator
-} from 'react-native';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { ActivityIndicator, Text, View } from 'react-native';
 import { connect } from 'react-redux';
+
 import { fetchQuestionsFromAPI } from '../actions';
-import Button from '../components/Button';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { container, welcomeText } from "../util/styles";
+import Header from '../components/Header';
+import { container, welcomeText } from '../util/styles';
 
 const buttonBody = (isFetching) =>
     isFetching ? (
