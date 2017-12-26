@@ -1,5 +1,5 @@
 import { NavigationActions } from 'react-navigation';
-import { WELCOME, QUIZ, SUMMARY, RESTART_GAME } from "../constants";
+import { WELCOME, QUIZ, SUMMARY, RESTART_GAME } from "../util/constants";
 
 import { RootNavigator } from '../navigators/AppNavigator';
 const initialState = RootNavigator.router.getStateForAction(RootNavigator.router.getActionForPathAndParams('Welcome'));

@@ -7,9 +7,12 @@ import {
     Dimensions,
     View
 } from 'react-native';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { answerQuestionAndNavigateToSummary } from '../actions';
-import Button from '../common/Button';
+import Button from '../components/Button';
+import Header from '../components/Header';
+import { container, welcomeText } from "../util/styles";
 
 class QuizScreen extends Component {
     constructor(props) {
@@ -41,60 +44,50 @@ class QuizScreen extends Component {
             inputRange: [0, 0.5],
             outputRange: [0, 1]
         })
-        const { questions: { questions, activeQuestion, answers }, navigation, answerQuestionAndNavigateToSummary } = this.props;
+        const { questions: { fetchedQuestions, activeQuestion, answers }, navigation, answerQuestionAndNavigateToSummary } = this.props;
         if (!activeQuestion) { return <View style={styles.container} />; }
         return (
-            <View style={styles.container}>
+            <View style={container}>
+                <Header text={activeQuestion.category} />
                 <Animated.View style={[styles.textContainer, { opacity }]}>
-                    <Text style={styles.welcome}>
-                        {activeQuestion.category}
-                    </Text>
                     <View style={styles.borderedText}>
-                        <Text style={styles.welcome}>
+                        <Text style={welcomeText}>
                             {activeQuestion.question}
                         </Text>
                         <Text style={styles.questionCount}>
-                            {answers.length + 1} of {questions.length}
+                            {answers.length + 1} of {fetchedQuestions.length}
                         </Text>
                     </View>
                 </Animated.View>
-                <View style={styles.buttonsContainer}>
-                    <Button
-                        onPress={() => answerQuestionAndNavigateToSummary(answers.length + 1, true)}
-                        body="TRUE"
-                        customStyles={[styles.button, styles.truthyButton]}
-                    />
-                    <Button
-                        onPress={() => answerQuestionAndNavigateToSummary(answers.length + 1, false)}
-                        body="FALSE"
-                        customStyles={[styles.button, styles.falsyButton]}
-                    />
-                </View>
+                <Footer buttons={[
+                    {
+                        onPress: () => answerQuestionAndNavigateToSummary(answers.length + 1, true),
+                        body: "TRUE",
+                        customStyles: [styles.button, styles.truthyButton]
+                    },
+                    {
+                        onPress: () => answerQuestionAndNavigateToSummary(answers.length + 1, false),
+                        body: "FALSE",
+                        customStyles: [styles.button, styles.falsyButton]
+                    }
+                ]} />
             </View>
         )
     }
 }
 
+QuizScreen.propTypes = {
+    questions: PropTypes.shape({
+        fetchedQuestions: PropTypes.array.isRequired,
+        activeQuestion: PropTypes.object,
+        answers: PropTypes.array.isRequired,
+    }),
+    navigation: PropTypes.object.isRequired,
+    answerQuestionAndNavigateToSummary: PropTypes.func,
+}
+
+
 const styles = StyleSheet.create({
-    container: {
-        paddingVertical: 20,
-        paddingHorizontal: 20,
-        flex: 1,
-        backgroundColor: '#FFDEA3',
-    },
-    buttonsContainer: {
-        flexDirection: "row",
-        alignItems: "center",
-        height: 60,
-        flex: 1,
-        alignItems: 'flex-end',
-        justifyContent: 'space-around'
-    },
-    welcome: {
-        fontSize: 30,
-        textAlign: 'center',
-        color: '#7F622B',
-    },
     questionCount: {
         fontSize: 23,
         textAlign: 'center',

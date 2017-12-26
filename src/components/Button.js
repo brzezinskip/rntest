@@ -7,12 +7,10 @@ const buttonContent = (body) =>
         : body;
 
 export default Button = ({ onPress, body, customStyles }) => (
-    (
-        <TouchableOpacity onPress={onPress} style={[styles.buttonContainer, customStyles]}>
-            {buttonContent(body)}
-        </TouchableOpacity>
-    )
-)
+    <TouchableOpacity onPress={onPress} style={[styles.buttonContainer, customStyles]}>
+        {buttonContent(body)}
+    </TouchableOpacity>
+);
 
 
 const styles = StyleSheet.create({

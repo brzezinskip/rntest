@@ -7,7 +7,7 @@ import {
     FETCHING_QUESTIONS_SUCCESS,
     FETCHING_QUESTIONS_FAILURE,
     QUESTION_ANSWERED,
-} from "./constants";
+} from "./util/constants";
 
 
 export function fetchQuestionsFromAPI() {

@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import {
-    StyleSheet,
     Text,
     View,
     ActivityIndicator
 } from 'react-native';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchQuestionsFromAPI } from '../actions';
-import Button from '../common/Button';
+import Button from '../components/Button';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { container, welcomeText } from "../util/styles";
 
 const buttonBody = (isFetching) =>
     isFetching ? (
@@ -16,43 +19,32 @@ const buttonBody = (isFetching) =>
         "Tap to start quiz!";
 
 const WelcomeScreen = (props) => {
-    const { questions: { questions, isFetching }, navigation, getQuestions } = props;
+    const { questions: { isFetching }, navigation, getQuestions } = props;
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.welcome}>
-                Welcome to the Trivia Challenge!
-            </Text>
-            <Text style={styles.welcome}>
+        <View style={container}>
+            <Header text="Welcome to the Trivia Challenge!" />
+            <Text style={welcomeText}>
                 You will be presented with 10 True or False questions.
             </Text>
-            <Text style={styles.welcome}>
+            <Text style={welcomeText}>
                 Can you score 100%?
             </Text>
-            <Button
-                onPress={getQuestions}
-                body={buttonBody(isFetching)}
-            />
+            <Footer buttons={[{
+                onPress: getQuestions,
+                body: buttonBody(isFetching),
+            }]} />
         </View>
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        paddingVertical: 20,
-        paddingHorizontal: 20,
-        flex: 1,
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        backgroundColor: '#FFDEA3',
-    },
-    welcome: {
-        fontSize: 30,
-        textAlign: 'center',
-        color: '#7F622B',
-    }
-});
-
+WelcomeScreen.propTypes = {
+    questions: PropTypes.shape({
+        isFetching: PropTypes.bool.isRequired,
+    }),
+    navigation: PropTypes.object.isRequired,
+    getQuestions: PropTypes.func.isRequired,
+}
 
 function mapStateToProps(state) {
     return {
