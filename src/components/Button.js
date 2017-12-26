@@ -1,18 +1,15 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 const buttonContent = (body) =>
     typeof body === "string" ?
         <Text style={styles.buttonText}>{body}</Text>
         : body;
 
-export default Button = ({ onPress, body, customStyles }) => (
-    (
-        <TouchableOpacity onPress={onPress} style={[styles.buttonContainer, customStyles]}>
-            {buttonContent(body)}
-        </TouchableOpacity>
-    )
-)
+export default Button = ({ onPress, body, customStyles }) =>
+    <TouchableOpacity onPress={onPress} style={[styles.buttonContainer, customStyles]}>
+        {buttonContent(body)}
+    </TouchableOpacity>
 
 
 const styles = StyleSheet.create({

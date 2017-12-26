@@ -1,7 +1,8 @@
 import React from 'react';
 import { combineReducers } from 'redux';
-import questions from './questions';
+
 import nav from './navigation';
+import questions from './questions';
 
 const rootReducer = combineReducers({
     questions,

@@ -1,13 +1,13 @@
 import {
-    RESTART_GAME,
     FETCHING_QUESTIONS,
-    FETCHING_QUESTIONS_SUCCESS,
     FETCHING_QUESTIONS_FAILURE,
+    FETCHING_QUESTIONS_SUCCESS,
     QUESTION_ANSWERED,
-} from "../constants";
+    RESTART_GAME,
+} from '../util/constants';
 
 const initialState = {
-    questions: [],
+    fetchedQuestions: [],
     isFetching: false,
     error: false,
     activeQuestion: {},
@@ -33,14 +33,14 @@ export default function questionsReducer(state = initialState, action) {
             return {
                 ...state,
                 isFetching: true,
-                questions: [],
+                fetchedQuestions: [],
             }
         }
         case FETCHING_QUESTIONS_SUCCESS: {
             return {
                 ...state,
                 isFetching: false,
-                questions: action.data,
+                fetchedQuestions: action.data,
                 activeQuestion: action.data[state.activeQuestionIndex] //set first question as active initially
             }
         }
@@ -55,7 +55,7 @@ export default function questionsReducer(state = initialState, action) {
             return {
                 ...state,
                 answers: setAnswer(action.answer, state.activeQuestion, state.answers),
-                activeQuestion: state.questions[state.activeQuestionIndex + 1],
+                activeQuestion: state.fetchedQuestions[state.activeQuestionIndex + 1],
                 activeQuestionIndex: state.activeQuestionIndex + 1,
             }
         }
